@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Button from 'components/Button';
+import Card from 'components/Card';
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,10 +21,27 @@ const Title = styled.h1`
   text-align: center;
 `;
 
+const PurposeCard = styled.div`
+  margin-top: 20px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+`;
+
+const cardImage = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAUGVYIeZbJ0Rv6-LnW9BPc79tRaqqpMBUqIHDWjIR270C47cMbg';
+
 const Body = () => (
   <Wrapper>
     <Title>Application Name</Title>
     <Button padding="0.375rem 4rem">Chat Now !</Button>
+    <PurposeCard>
+      <Card text="Create and lead rooms for awesome chatting subject !" image={cardImage}/>
+      <Card text="Grow your list of chats and acquaintances !" image={cardImage}/>
+      <Card text="Empower your favourite chat room !" image={cardImage}/>
+    </PurposeCard>
   </Wrapper>
 );
 

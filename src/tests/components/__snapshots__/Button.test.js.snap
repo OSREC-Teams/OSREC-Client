@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders an html button 1`] = `
+<StyledComponent
+  forwardedClass={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": undefined,
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bdVaJa",
+        "isStatic": false,
+        "rules": Array [
+          "
+  background-color: #6c3b91;
+  border-radius: 0.25rem;
+  border: 2px solid;
+  border-color: #6c3b91;
+  padding: ",
+          [Function],
+          ";
+  font-size: ",
+          [Function],
+          ";
+  font-weight: 900;
+  text-align: center;
+  color: white;
+  transition: 0.2s;
+
+  &:hover {
+    background-color: #8449b2;
+    border-color: #8449b2;
+    cursor: pointer;
+  }
+
+  &:active {
+    background-color: #593177;
+    border-color: #593177;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+",
+        ],
+      },
+      "displayName": "styled.button",
+      "render": [Function],
+      "styledComponentId": "sc-bdVaJa",
+      "target": "button",
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+>
+  Beautiful Button
+</StyledComponent>
+`;

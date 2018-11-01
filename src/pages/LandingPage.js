@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Header from 'pages/landingPage/Header';
 import Body from 'pages/landingPage/Body';
 
 const Page = styled.div`
@@ -10,6 +11,7 @@ const Page = styled.div`
 
 const LandingPage = () => (
   <Page>
+    <Header />
     <Body />
   </Page>
 );

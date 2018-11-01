@@ -33,14 +33,20 @@ const PurposeCard = styled.div`
 
 const cardImage = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAUGVYIeZbJ0Rv6-LnW9BPc79tRaqqpMBUqIHDWjIR270C47cMbg';
 
+const purposeCardText = {
+  login: 'Log in and dive into multiples awesome chats',
+  create: 'Create and lead rooms around a subject',
+  chat: 'Talk and share about your favourite topics'
+}
+
 const Body = () => (
   <Wrapper>
     <Title>Application Name</Title>
     <Button padding="0.375rem 4rem">Chat Now !</Button>
     <PurposeCard>
-      <Card text="Create and lead rooms for awesome chatting subject !" image={cardImage}/>
-      <Card text="Grow your list of chats and acquaintances !" image={cardImage}/>
-      <Card text="Empower your favourite chat room !" image={cardImage}/>
+      <Card text={purposeCardText.login} image={cardImage}/>
+      <Card text={purposeCardText.create} image={cardImage}/>
+      <Card text={purposeCardText.chat} image={cardImage}/>
     </PurposeCard>
   </Wrapper>
 );

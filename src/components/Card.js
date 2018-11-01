@@ -6,8 +6,8 @@ import styled from 'styled-components'
 const ImageAndTextCard = styled.div`
      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
      transition: 0.3s;
-     width: 30%;
-     height: 40%;
+     width: ${props => props.width};
+     height: ${props => props.height};
      &:hover {
        box-shadow: 0 12px 20px 0 rgba(0,0,0,0.2);
      }
@@ -17,8 +17,8 @@ const TextContainer = styled.div`
     padding: 2px 16px;
 `
 
-const Card = ({image, text}) => (
-  <ImageAndTextCard>
+const Card = ({width, height, image, text}) => (
+  <ImageAndTextCard width={width} height={height}>
     <img src={image} alt="" style={{ width : "100%"}} />
     <TextContainer>
       <h4><b>{text}</b></h4>
@@ -26,7 +26,14 @@ const Card = ({image, text}) => (
   </ImageAndTextCard>
 );
 
+Card.defaultProps = {
+ width: '30%',
+ height: '40%',
+}
+
 Card.propTypes = {
+  width: PropTypes.string,
+  height: PropTypes.string,
   text: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
 }

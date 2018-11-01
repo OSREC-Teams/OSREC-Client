@@ -28,7 +28,9 @@ const Title = styled.h1`
 const Body = () => (
   <Wrapper>
     <Title>Application Name</Title>
-    <Button padding="0.375rem 4rem">Chat Now !</Button>
+    <Button fontSize="1.5rem" padding="0.375rem 4rem">
+      Chat Now !
+    </Button>
   </Wrapper>
 );
 

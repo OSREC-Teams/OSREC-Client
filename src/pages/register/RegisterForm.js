@@ -34,13 +34,11 @@ const FieldError = styled.p`
 `;
 
 const RegisterForm = ({
-  values,
   errors,
   touched,
   isSubmitting
 }) => (
   <Form>
-    <h1>{values.email}</h1>
     <FormTitle>Register</FormTitle>
     <FormFieldAndError>
       { touched.email && errors.email && <FieldError>{errors.email}</FieldError> }
@@ -61,7 +59,6 @@ const RegisterForm = ({
 )
 
  RegisterForm.propTypes = {
-   values: PropTypes.object.isRequired,
    errors: PropTypes.object.isRequired,
    touched: PropTypes.object.isRequired,
    isSubmitting: PropTypes.bool.isRequired,

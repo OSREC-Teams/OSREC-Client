@@ -17,15 +17,21 @@ const FormTitle = styled.h1`
   margin-bottom: 20px;
 `;
 
+const FormComponent = styled(Form)`
+  width: 40%;
+  text-align: center;
+`;
+
 // TODO: Focus violet
 const FormField = styled(Field)`
   font-size: 1em;
   margin-bottom: 10px;
+  border-color: #6c3b91;
+  border-radius: 5px;
 `;
 
-const FormFieldAndError = styled.div`
+const FieldContainer = styled.div`
   display: flex;
-  justify-content: space-evenly;
 `;
 
 const FieldError = styled.p`
@@ -38,24 +44,24 @@ const RegisterForm = ({
   touched,
   isSubmitting
 }) => (
-  <Form>
+  <FormComponent>
     <FormTitle>Register</FormTitle>
-    <FormFieldAndError>
-      { touched.email && errors.email && <FieldError>{errors.email}</FieldError> }
+    <FieldContainer>
       <FormField type="email" name="email" placeholder="Email"/>
-    </FormFieldAndError>
-    <FormFieldAndError>
-      { touched.username && errors.username && <FieldError>{errors.username}</FieldError> }
+      { touched.email && errors.email && <FieldError>{errors.email}</FieldError> }
+    </FieldContainer>
+    <FieldContainer>
       <FormField type="username" name="username" placeholder="Username"/>
-    </FormFieldAndError>
-    <FormFieldAndError>
-        { touched.password && errors.password && <FieldError>{errors.password}</FieldError> }
+      { touched.username && errors.username && <FieldError>{errors.username}</FieldError> }
+    </FieldContainer>
+    <FieldContainer>
         <FormField type="password" name="password" placeholder="Password"/>
-    </FormFieldAndError>
+        { touched.password && errors.password && <FieldError>{errors.password}</FieldError> }
+    </FieldContainer>
     <Button disabled={isSubmitting} type="submit" fontSize="1.5rem" padding="0.375rem 4rem">
       Submit
     </Button>
-  </Form>
+  </FormComponent>
 )
 
  RegisterForm.propTypes = {

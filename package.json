@@ -20,6 +20,7 @@
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
     "eslint": "^5.8.0",
+    "enzyme-to-json": "^3.3.4",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.1.0",
     "eslint-loader": "2.1.1",
@@ -60,6 +61,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
+    "setup": "exit 0",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "lint": "eslint src/**/*.js"
@@ -104,6 +106,10 @@
       "web.jsx",
       "jsx",
       "node"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/config/jest/setupEnzyme.js",
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
     ]
   },
   "babel": {

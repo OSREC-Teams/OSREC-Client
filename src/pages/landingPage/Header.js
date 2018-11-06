@@ -1,10 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Button from 'components/Button';
 
-const Header = ({ children }) => <div>{children}</div>;
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-top: 30px;
+  padding-right: 30px;
+`;
 
-Header.propTypes = {
-  children: PropTypes.element.isRequired,
-};
+const Header = () => (
+  <Wrapper>
+    <Button>Login</Button>
+  </Wrapper>
+);
 
 export default Header;

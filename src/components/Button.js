@@ -6,7 +6,7 @@ export default styled.button`
   border: 2px solid;
   border-color: #6c3b91;
   padding: ${props => (props.padding ? props.padding : '0.375rem 0.75rem')};
-  font-size: 1.5rem;
+  font-size: ${props => (props.fontSize ? props.fontSize : '1rem')};
   font-weight: 900;
   text-align: center;
   color: white;

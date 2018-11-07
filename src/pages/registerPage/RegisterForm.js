@@ -29,6 +29,18 @@ const FieldContainer = styled.div`
   align-items: center;
 `;
 
+const errorDisplay = (touched, errors) => {
+  const displayedError = Object.keys(touched).map(touchedKey =>
+    Object.keys(errors).map(errorKey => {
+      if (touchedKey === errorKey) {
+        return <ErrorField>{errors[errorKey]}<br/></ErrorField>
+      }
+      return undefined;
+    }));
+
+    return displayedError
+}
+
 const RegisterForm = ({
   errors,
   touched,
@@ -36,17 +48,15 @@ const RegisterForm = ({
 }) => (
   <FormComponent>
     <FormTitle>Register</FormTitle>
+    <p>{errorDisplay(touched, errors)}</p>
     <FieldContainer>
-      <FormField type="email" name="email" placeholder="Email"/>
-      { touched.email && errors.email && <ErrorField>{errors.email}</ErrorField> }
+      <FormField type="email" name="email" placeholder="Email" border={touched.email && errors.email ? '#FF0000' : '#6c3b91'}/>
     </FieldContainer>
     <FieldContainer>
-      <FormField type="username" name="username" placeholder="Username"/>
-      { touched.username && errors.username && <ErrorField>{errors.username}</ErrorField> }
+      <FormField type="username" name="username" placeholder="Username" border={touched.username && errors.username ? '#FF0000' : '#6c3b91'}/>
     </FieldContainer>
     <FieldContainer>
-        <FormField type="password" name="password" placeholder="Password"/>
-        { touched.password && errors.password && <ErrorField>{errors.password}</ErrorField> }
+        <FormField type="password" name="password" placeholder="Password" border={touched.password && errors.password ? '#FF0000' : '#6c3b91'}/>
     </FieldContainer>
     <Button disabled={isSubmitting} type="submit" fontSize="1.5rem" padding="0.375rem 4rem">
       Submit

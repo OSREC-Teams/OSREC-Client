@@ -13,6 +13,7 @@ const FormContainer = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
+  flex-position: row;
   justify-content: space-evenly;
 `;
 

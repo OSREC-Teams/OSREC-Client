@@ -30,14 +30,18 @@ const FieldContainer = styled.div`
 `;
 
 const errorDisplay = (touched, errors) => {
+  let counter = 0;
+
   const displayedError = Object.keys(touched).map(touchedKey =>
     Object.keys(errors).map(errorKey => {
+      counter += 1;
       if (touchedKey === errorKey) {
-        return <ErrorField>{errors[errorKey]}<br/></ErrorField>
+        return <ErrorField key={counter}>{errors[errorKey]}<br/></ErrorField>
       }
       return undefined;
     }));
 
+    console.log(displayedError);
     return displayedError
 }
 
@@ -48,7 +52,7 @@ const RegisterForm = ({
 }) => (
   <FormComponent>
     <FormTitle>Register</FormTitle>
-    <p>{errorDisplay(touched, errors)}</p>
+    <div>{errorDisplay(touched, errors)}</div>
     <FieldContainer>
       <FormField type="email" name="email" placeholder="Email" border={touched.email && errors.email ? '#FF0000' : '#6c3b91'}/>
     </FieldContainer>

@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import { withFormik, Form, Field } from 'formik'
+import { withFormik, Form } from 'formik'
 import styled from 'styled-components'
 import * as Yup from 'yup';
 
+import ErrorField from '../../components/FormComponents/Error';
+import FormField from '../../components/FormComponents/Field';
 import Button from '../../components/Button';
 
 const FormTitle = styled.h1`
@@ -18,25 +20,13 @@ const FormTitle = styled.h1`
 `;
 
 const FormComponent = styled(Form)`
-  width: 40%;
+  width: 80%;
   text-align: center;
-`;
-
-// TODO: Focus violet
-const FormField = styled(Field)`
-  font-size: 1em;
-  margin-bottom: 10px;
-  border-color: #6c3b91;
-  border-radius: 5px;
 `;
 
 const FieldContainer = styled.div`
   display: flex;
-`;
-
-const FieldError = styled.p`
-  color: white;
-  font-family: 'Exo 2', sans-serif;
+  align-items: center;
 `;
 
 const RegisterForm = ({
@@ -48,15 +38,15 @@ const RegisterForm = ({
     <FormTitle>Register</FormTitle>
     <FieldContainer>
       <FormField type="email" name="email" placeholder="Email"/>
-      { touched.email && errors.email && <FieldError>{errors.email}</FieldError> }
+      { touched.email && errors.email && <ErrorField>{errors.email}</ErrorField> }
     </FieldContainer>
     <FieldContainer>
       <FormField type="username" name="username" placeholder="Username"/>
-      { touched.username && errors.username && <FieldError>{errors.username}</FieldError> }
+      { touched.username && errors.username && <ErrorField>{errors.username}</ErrorField> }
     </FieldContainer>
     <FieldContainer>
         <FormField type="password" name="password" placeholder="Password"/>
-        { touched.password && errors.password && <FieldError>{errors.password}</FieldError> }
+        { touched.password && errors.password && <ErrorField>{errors.password}</ErrorField> }
     </FieldContainer>
     <Button disabled={isSubmitting} type="submit" fontSize="1.5rem" padding="0.375rem 4rem">
       Submit

@@ -10,7 +10,7 @@ const PurposeCard = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: baseline;
 `;
 
 const cardImage =

@@ -7,8 +7,8 @@ import Register from 'pages/Register';
 const App = () => (
   <Router>
     <Switch>
-      <Route key={0} exact path="/" component={LandingPage} />
-      <Route key={1} path="/register" component={Register} />
+      <Route exact path="/" component={LandingPage} />
+      <Route path="/register" component={Register} />
     </Switch>
   </Router>
 );

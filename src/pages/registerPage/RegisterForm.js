@@ -40,8 +40,6 @@ const errorDisplay = (touched, errors) => {
       }
       return undefined;
     }));
-
-    console.log(displayedError);
     return displayedError
 }
 

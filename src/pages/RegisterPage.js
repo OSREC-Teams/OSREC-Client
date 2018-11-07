@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import RegisterForm from './register/RegisterForm';
+import RegisterForm from './registerPage/RegisterForm';
 import Header from './landingPage/Header';
 
 const Page = styled.div`
   height: 100%;
-  background-color: #313131;
 `;
 
 const FormContainer = styled.div`

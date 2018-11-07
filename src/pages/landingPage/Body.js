@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Button from 'components/Button';
-import AppPurposeCards from './AppPurposeCards'
-
+import AppPurposeCards from './AppPurposeCards';
 
 const Wrapper = styled.div`
   position: absolute;
@@ -27,11 +26,17 @@ const Title = styled.h1`
   margin-bottom: 1.5em;
 `;
 
+const AppPurposeCardsWithMargin = styled(AppPurposeCards)`
+  margin: 50px 20px;
+`;
+
 const Body = () => (
   <Wrapper>
     <Title>Application Name</Title>
-    <Button padding="0.375rem 4rem">Chat Now !</Button>
-    <AppPurposeCards/>
+    <Button fontSize="1.5rem" padding="0.375rem 4rem">
+      Chat Now !
+    </Button>
+    <AppPurposeCardsWithMargin />
   </Wrapper>
 );
 

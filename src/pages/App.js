@@ -13,7 +13,7 @@ const GuestRouter = () => (
   </Router>
 );
 
-const App = ({ loggedIn }) => (
+export const App = ({ loggedIn }) => (
   <React.Fragment>
     {loggedIn ? <ProtectedRouter /> : <GuestRouter />}
   </React.Fragment>

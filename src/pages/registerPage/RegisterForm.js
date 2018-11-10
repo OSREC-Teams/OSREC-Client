@@ -4,8 +4,8 @@ import { withFormik, Form } from 'formik'
 import styled from 'styled-components'
 import * as Yup from 'yup';
 
-import ErrorField from '../../components/FormComponents/Error';
-import FormField from '../../components/FormComponents/Field';
+import ErrorField from '../../components/formComponents/Error';
+import FormField from '../../components/formComponents/Field';
 import Button from '../../components/Button';
 
 const FormTitle = styled.h1`

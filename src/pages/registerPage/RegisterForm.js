@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import { withFormik, Form } from 'formik'
 import styled from 'styled-components'
-import * as Yup from 'yup';
+import * as yup from 'yup';
 
 import ErrorField from '../../components/formComponents/Error';
 import FormField from '../../components/formComponents/Field';
@@ -80,9 +80,9 @@ const RegisterFormik = withFormik({
       username: username || ''
     }
   },
-  validationSchema: Yup.object().shape({
-    email: Yup.string().email('Email not valid').required('Email is required'),
-    password: Yup.string().min(9, 'Password must be 9 characters or longer').required('Password is required')
+  validationSchema: yup.object().shape({
+    email: yup.string().email('Email not valid').required('Email is required'),
+    password: yup.string().min(9, 'Password must be 9 characters or longer').required('Password is required')
     // Find a validation for username
   }),
   handleSubmit(values, { resetForm, setErrors, setSubmitting }) {

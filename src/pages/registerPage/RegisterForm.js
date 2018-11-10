@@ -8,39 +8,30 @@ import ErrorField from '../../components/formComponents/Error';
 import FormField from '../../components/formComponents/Field';
 import Button from '../../components/Button';
 
-const FormTitle = styled.h1`
-  font-family: 'Exo 2', sans-serif;
-  padding: 0.5em 0;
-  border-top: 2px solid #6c3b91;
-  border-bottom: 2px solid #6c3b91;
-  color: white;
-  text-align: center;
-  font-weight: normal;
-  margin-bottom: 20px;
-`;
-
-const FormComponent = styled(Form)`
-  width: 80%;
-  text-align: center;
-`;
-
 const FieldContainer = styled.div`
   display: flex;
   align-items: center;
 `;
 
-const errorDisplay = (touched, errors) => {
-  let counter = 0;
+const FormContainer = styled.div`
+  border-radius: 0.25rem;
+  padding: 20px;
+  background-color: #666666;
+  display: flex;
+  align-items: center;
+  justify-content: evenly;
+  flex-direction: column;
+`;
 
+const errorDisplay = (touched, errors) => {
   const displayedError = Object.keys(touched).map(touchedKey =>
     Object.keys(errors).map(errorKey => {
-      counter += 1;
       if (touchedKey === errorKey) {
-        return <ErrorField key={counter}>{errors[errorKey]}<br/></ErrorField>
+        return <ErrorField key={errorKey}>{errors[errorKey]}</ErrorField>
       }
-      return undefined;
+      return null;
     }));
-    return displayedError
+    return displayedError;
 }
 
 const RegisterForm = ({
@@ -48,22 +39,23 @@ const RegisterForm = ({
   touched,
   isSubmitting
 }) => (
-  <FormComponent>
-    <FormTitle>Register</FormTitle>
-    <div>{errorDisplay(touched, errors)}</div>
-    <FieldContainer>
-      <FormField type="email" name="email" placeholder="Email" border={touched.email && errors.email ? '#FF0000' : '#6c3b91'}/>
-    </FieldContainer>
-    <FieldContainer>
-      <FormField type="username" name="username" placeholder="Username" border={touched.username && errors.username ? '#FF0000' : '#6c3b91'}/>
-    </FieldContainer>
-    <FieldContainer>
-        <FormField type="password" name="password" placeholder="Password" border={touched.password && errors.password ? '#FF0000' : '#6c3b91'}/>
-    </FieldContainer>
-    <Button disabled={isSubmitting} type="submit" fontSize="1.5rem" padding="0.375rem 4rem">
+  <Form>
+    <FormContainer>
+      {errorDisplay(touched, errors)}
+      <FieldContainer>
+        <FormField type="email" name="email" placeholder="Email" error={touched.email && errors.email} />
+      </FieldContainer>
+      <FieldContainer>
+        <FormField type="username" name="username" placeholder="Username" error={touched.username && errors.username} />
+      </FieldContainer>
+      <FieldContainer>
+        <FormField type="password" name="password" placeholder="Password" error={touched.password && errors.password} />
+      </FieldContainer>
+      <Button disabled={isSubmitting} type="submit" fontSize="1.5rem" padding="0.375rem 4rem">
       Submit
     </Button>
-  </FormComponent>
+    </FormContainer>
+  </Form>
 )
 
  RegisterForm.propTypes = {
@@ -82,8 +74,8 @@ const RegisterFormik = withFormik({
   },
   validationSchema: yup.object().shape({
     email: yup.string().email('Email not valid').required('Email is required'),
-    password: yup.string().min(9, 'Password must be 9 characters or longer').required('Password is required')
-    // Find a validation for username
+    password: yup.string().min(9, 'Password must be 9 characters or longer').required('Password is required'),
+    username: yup.string().min(3, 'Username must be 3 characters or longer').required('Username is required')
   }),
   handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
     // TODO: Call the redux once it's done

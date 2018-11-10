@@ -10,17 +10,29 @@ const Page = styled.div`
 
 const FormContainer = styled.div`
   margin-top: 20px;
-  height: 100%;
-  width: 100%;
   display: flex;
-  flex-position: row;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-evenly;
+`;
+
+const FormTitle = styled.h1`
+  font-family: 'Exo 2', sans-serif;
+  padding: 0.5em 0;
+  width: 80%;
+  border-top: 2px solid #6c3b91;
+  border-bottom: 2px solid #6c3b91;
+  color: white;
+  text-align: center;
+  font-weight: normal;
+  margin-bottom: 20px;
 `;
 
 const Register = () => (
   <Page>
     <Header/>
     <FormContainer>
+      <FormTitle>Register</FormTitle>
       <RegisterForm/>
     </FormContainer>
   </Page>

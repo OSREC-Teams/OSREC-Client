@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders a form error div 1`] = `
+<StyledComponent
+  forwardedClass={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": undefined,
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bdVaJa",
+        "isStatic": true,
+        "rules": Array [
+          "
+  color: white;
+  background: red;
+  height: 2em;
+  padding: 0.5em;
+  font-family: 'Exo 2', sans-serif;
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width-min: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: evenly;
+  flex-direction: column;
+",
+        ],
+      },
+      "displayName": "styled.div",
+      "render": [Function],
+      "styledComponentId": "sc-bdVaJa",
+      "target": "div",
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+>
+  Error
+</StyledComponent>
+`;

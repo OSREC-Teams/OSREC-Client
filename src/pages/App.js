@@ -1,15 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import LandingPage from 'pages/LandingPage';
+import RegisterPage from 'pages/RegisterPage';
 
 const ProtectedRouter = () => <Router />;
 
 const GuestRouter = () => (
   <Router>
-    <Route path="/" component={LandingPage} />
+    <Switch>
+      <Route exact path="/" component={LandingPage} />
+      <Route path="/register" component={RegisterPage} />
+    </Switch>
   </Router>
 );
 

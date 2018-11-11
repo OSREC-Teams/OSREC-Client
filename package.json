@@ -72,6 +72,17 @@
     "test": "node scripts/test.js",
     "lint": "eslint src/**/*.js"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "git fetch"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint"
+    ]
+  },
   "browserslist": [
     ">0.2%",
     "not dead",
@@ -122,5 +133,9 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "husky": "^1.1.3",
+    "lint-staged": "^8.0.4"
   }
 }

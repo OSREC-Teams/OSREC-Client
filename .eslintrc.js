@@ -17,7 +17,8 @@ module.exports = {
   },
   rules: {
     'react/jsx-filename-extension': 0,
-    "react/forbid-prop-types": 0,
+    'react/forbid-prop-types': 0,
+    'import/no-named-as-default': 0,
   },
   settings: {
     'import/resolver': {

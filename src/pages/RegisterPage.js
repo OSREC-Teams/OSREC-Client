@@ -30,10 +30,10 @@ const FormTitle = styled.h1`
 
 const Register = () => (
   <Page>
-    <Header/>
+    <Header />
     <FormContainer>
       <FormTitle>Register</FormTitle>
-      <RegisterForm/>
+      <RegisterForm />
     </FormContainer>
   </Page>
 );

@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
-import { withFormik, Form } from 'formik'
-import styled from 'styled-components'
+import { withFormik, Form } from 'formik';
+import styled from 'styled-components';
 import * as yup from 'yup';
 
 import ErrorField from '../../components/formComponents/Error';
@@ -27,67 +27,93 @@ const errorDisplay = (touched, errors) => {
   const displayedError = Object.keys(touched).map(touchedKey =>
     Object.keys(errors).map(errorKey => {
       if (touchedKey === errorKey) {
-        return <ErrorField key={errorKey}>{errors[errorKey]}</ErrorField>
+        return <ErrorField key={errorKey}>{errors[errorKey]}</ErrorField>;
       }
       return null;
-    }));
-    return displayedError;
-}
+    }),
+  );
+  return displayedError;
+};
 
-const RegisterForm = ({
-  errors,
-  touched,
-  isSubmitting
-}) => (
+const RegisterForm = ({ errors, touched, isSubmitting }) => (
   <Form>
     <FormContainer>
       {errorDisplay(touched, errors)}
       <FieldContainer>
-        <FormField type="email" name="email" placeholder="Email" error={touched.email && errors.email} />
+        <FormField
+          type="email"
+          name="email"
+          placeholder="Email"
+          error={touched.email && errors.email}
+        />
       </FieldContainer>
       <FieldContainer>
-        <FormField type="username" name="username" placeholder="Username" error={touched.username && errors.username} />
+        <FormField
+          type="username"
+          name="username"
+          placeholder="Username"
+          error={touched.username && errors.username}
+        />
       </FieldContainer>
       <FieldContainer>
-        <FormField type="password" name="password" placeholder="Password" error={touched.password && errors.password} />
+        <FormField
+          type="password"
+          name="password"
+          placeholder="Password"
+          error={touched.password && errors.password}
+        />
       </FieldContainer>
-      <Button disabled={isSubmitting} type="submit" fontSize="1.5rem" padding="0.375rem 4rem">
-      Submit
-    </Button>
+      <Button
+        disabled={isSubmitting}
+        type="submit"
+        fontSize="1.5rem"
+        padding="0.375rem 4rem"
+      >
+        Submit
+      </Button>
     </FormContainer>
   </Form>
-)
+);
 
- RegisterForm.propTypes = {
-   errors: PropTypes.object.isRequired,
-   touched: PropTypes.object.isRequired,
-   isSubmitting: PropTypes.bool.isRequired,
- }
+RegisterForm.propTypes = {
+  errors: PropTypes.object.isRequired,
+  touched: PropTypes.object.isRequired,
+  isSubmitting: PropTypes.bool.isRequired,
+};
 
 const RegisterFormik = withFormik({
   mapPropsToValues({ email, password, username }) {
     return {
       email: email || '',
       password: password || '',
-      username: username || ''
-    }
+      username: username || '',
+    };
   },
   validationSchema: yup.object().shape({
-    email: yup.string().email('Email not valid').required('Email is required'),
-    password: yup.string().min(9, 'Password must be 9 characters or longer').required('Password is required'),
-    username: yup.string().min(3, 'Username must be 3 characters or longer').required('Username is required')
+    email: yup
+      .string()
+      .email('Email not valid')
+      .required('Email is required'),
+    password: yup
+      .string()
+      .min(9, 'Password must be 9 characters or longer')
+      .required('Password is required'),
+    username: yup
+      .string()
+      .min(3, 'Username must be 3 characters or longer')
+      .required('Username is required'),
   }),
   handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
     // TODO: Call the redux once it's done
     setTimeout(() => {
-      if(values.email === 'andrew@test.io') {
-        setErrors({ email: 'That email is already taken' })
+      if (values.email === 'andrew@test.io') {
+        setErrors({ email: 'That email is already taken' });
       } else {
-        resetForm()
+        resetForm();
       }
-      setSubmitting(false)
-    }, 2000)
-  }
-})(RegisterForm)
+      setSubmitting(false);
+    }, 2000);
+  },
+})(RegisterForm);
 
 export default RegisterFormik;

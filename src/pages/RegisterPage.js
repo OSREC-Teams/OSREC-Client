@@ -1,8 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import RegisterForm from './registerPage/RegisterForm';
 import Header from './landingPage/Header';
+
+import { createUser } from '../modules/actions/users';
 
 const Page = styled.div`
   height: 100%;
@@ -28,18 +32,24 @@ const FormTitle = styled.h1`
   margin-bottom: 20px;
 `;
 
-const Register = () => (
+const Register = ({ registerUser }) => (
   <Page>
     <Header/>
     <FormContainer>
       <FormTitle>Register</FormTitle>
-      <RegisterForm/>
+      <RegisterForm registerUser={registerUser}/>
     </FormContainer>
   </Page>
 );
 
 Register.defaultProps = {};
 
-Register.propTypes = {};
+Register.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+};
 
-export default Register;
+const mapDispatchToProps = {
+  registerUser: createUser,
+}
+
+export default connect(undefined, mapDispatchToProps)(Register);

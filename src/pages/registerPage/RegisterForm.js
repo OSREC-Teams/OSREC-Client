@@ -37,7 +37,7 @@ const errorDisplay = (touched, errors) => {
 const RegisterForm = ({
   errors,
   touched,
-  isSubmitting
+  isSubmitting,
 }) => (
   <Form>
     <FormContainer>
@@ -65,11 +65,12 @@ const RegisterForm = ({
  }
 
 const RegisterFormik = withFormik({
-  mapPropsToValues({ email, password, username }) {
+  mapPropsToValues({ email, password, username, registerUser }) {
     return {
       email: email || '',
       password: password || '',
-      username: username || ''
+      username: username || '',
+      registerUser,
     }
   },
   validationSchema: yup.object().shape({
@@ -78,7 +79,11 @@ const RegisterFormik = withFormik({
     username: yup.string().min(3, 'Username must be 3 characters or longer').required('Username is required')
   }),
   handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
-    // TODO: Call the redux once it's done
+    values.registerUser({
+      email: values.email,
+      username: values.username,
+      password: values.password,
+    });
     setTimeout(() => {
       if(values.email === 'andrew@test.io') {
         setErrors({ email: 'That email is already taken' })

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Title from 'components/Title';
 import RegisterForm from './registerPage/RegisterForm';
 import Header from './landingPage/Header';
 
@@ -16,23 +17,11 @@ const FormContainer = styled.div`
   justify-content: space-evenly;
 `;
 
-const FormTitle = styled.h1`
-  font-family: 'Exo 2', sans-serif;
-  padding: 0.5em 0;
-  width: 80%;
-  border-top: 2px solid #6c3b91;
-  border-bottom: 2px solid #6c3b91;
-  color: white;
-  text-align: center;
-  font-weight: normal;
-  margin-bottom: 20px;
-`;
-
 const Register = () => (
   <Page>
     <Header />
     <FormContainer>
-      <FormTitle>Register</FormTitle>
+      <Title marginBottom="20px">Register</Title>
       <RegisterForm />
     </FormContainer>
   </Page>

@@ -5,26 +5,12 @@ import * as yup from 'yup';
 
 import Form from 'components/formComponents/Form';
 import FormWrapper from 'components/formComponents/Wrapper';
-import ErrorField from 'components/formComponents/Error';
 import FormField from 'components/formComponents/Field';
 import Button from 'components/Button';
 
-const errorDisplay = (touched, errors) => {
-  const displayedError = Object.keys(touched).map(touchedKey =>
-    Object.keys(errors).map(errorKey => {
-      if (touchedKey === errorKey) {
-        return <ErrorField key={errorKey}>{errors[errorKey]}</ErrorField>;
-      }
-      return null;
-    }),
-  );
-  return displayedError;
-};
-
 const RegisterForm = ({ errors, touched, isSubmitting }) => (
   <FormWrapper>
-    <Form>
-      {errorDisplay(touched, errors)}
+    <Form errors={errors} touched={touched}>
       <FormField
         type="email"
         name="email"

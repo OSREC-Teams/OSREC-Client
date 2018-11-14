@@ -1,22 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withFormik, Form } from 'formik';
-import styled from 'styled-components';
+import { withFormik } from 'formik';
 import * as yup from 'yup';
 
+import Form from 'components/formComponents/Form';
 import FormWrapper from 'components/formComponents/Wrapper';
 import ErrorField from 'components/formComponents/Error';
 import FormField from 'components/formComponents/Field';
 import Button from 'components/Button';
-
-const StyledForm = styled(Form)`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-`;
 
 const errorDisplay = (touched, errors) => {
   const displayedError = Object.keys(touched).map(touchedKey =>
@@ -32,7 +23,7 @@ const errorDisplay = (touched, errors) => {
 
 const RegisterForm = ({ errors, touched, isSubmitting }) => (
   <FormWrapper>
-    <StyledForm>
+    <Form>
       {errorDisplay(touched, errors)}
       <FormField
         type="email"
@@ -60,7 +51,7 @@ const RegisterForm = ({ errors, touched, isSubmitting }) => (
       >
         Submit
       </Button>
-    </StyledForm>
+    </Form>
   </FormWrapper>
 );
 

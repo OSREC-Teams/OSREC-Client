@@ -9,8 +9,10 @@ export default styled(Field)`
   border-radius: 0.3rem;
   height: 2em;
   padding: 0.5em;
+  width: 70%;
+  text-align: center;
 
   &:focus {
-    border-color: #6c3b91;
+    outline: #6c3b91;
   }
 `;

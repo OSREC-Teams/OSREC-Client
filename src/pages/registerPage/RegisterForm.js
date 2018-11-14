@@ -4,23 +4,18 @@ import { withFormik, Form } from 'formik';
 import styled from 'styled-components';
 import * as yup from 'yup';
 
-import ErrorField from '../../components/formComponents/Error';
-import FormField from '../../components/formComponents/Field';
-import Button from '../../components/Button';
+import FormWrapper from 'components/formComponents/Wrapper';
+import ErrorField from 'components/formComponents/Error';
+import FormField from 'components/formComponents/Field';
+import Button from 'components/Button';
 
-const FieldContainer = styled.div`
+const StyledForm = styled(Form)`
+  width: 100%;
+  height: 100%;
   display: flex;
-  align-items: center;
-`;
-
-const FormContainer = styled.div`
-  border-radius: 0.25rem;
-  padding: 20px;
-  background-color: #666666;
-  display: flex;
-  align-items: center;
-  justify-content: evenly;
   flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 `;
 
 const errorDisplay = (touched, errors) => {
@@ -36,33 +31,27 @@ const errorDisplay = (touched, errors) => {
 };
 
 const RegisterForm = ({ errors, touched, isSubmitting }) => (
-  <Form>
-    <FormContainer>
+  <FormWrapper>
+    <StyledForm>
       {errorDisplay(touched, errors)}
-      <FieldContainer>
-        <FormField
-          type="email"
-          name="email"
-          placeholder="Email"
-          error={touched.email && errors.email}
-        />
-      </FieldContainer>
-      <FieldContainer>
-        <FormField
-          type="username"
-          name="username"
-          placeholder="Username"
-          error={touched.username && errors.username}
-        />
-      </FieldContainer>
-      <FieldContainer>
-        <FormField
-          type="password"
-          name="password"
-          placeholder="Password"
-          error={touched.password && errors.password}
-        />
-      </FieldContainer>
+      <FormField
+        type="email"
+        name="email"
+        placeholder="Email"
+        error={touched.email && errors.email}
+      />
+      <FormField
+        type="username"
+        name="username"
+        placeholder="Username"
+        error={touched.username && errors.username}
+      />
+      <FormField
+        type="password"
+        name="password"
+        placeholder="Password"
+        error={touched.password && errors.password}
+      />
       <Button
         disabled={isSubmitting}
         type="submit"
@@ -71,8 +60,8 @@ const RegisterForm = ({ errors, touched, isSubmitting }) => (
       >
         Submit
       </Button>
-    </FormContainer>
-  </Form>
+    </StyledForm>
+  </FormWrapper>
 );
 
 RegisterForm.propTypes = {

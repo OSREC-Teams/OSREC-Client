@@ -8,8 +8,6 @@ import {
   usersCreateSuccess,
 } from './creators';
 
-export const a = () => {}
-
 export const createUser = user => dispatch =>
   new Promise((resolve, reject) => {
     const axiosConfig = {
@@ -17,13 +15,17 @@ export const createUser = user => dispatch =>
     };
 
     dispatch(usersCreateRequest());
-    axios.post(`${URL_API}/users`, user, axiosConfig)
+    axios
+      .post(`${URL_API}/users`, user, axiosConfig)
       .then(() => {
         dispatch(usersCreateSuccess());
         resolve();
       })
-      .catch((e) => {
+      .catch(e => {
+        console.log(e);
         dispatch(usersCreateFailure(e));
         reject();
       });
   });
+
+export default createUser;

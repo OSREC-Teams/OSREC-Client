@@ -4,7 +4,7 @@ import {
   USERS_CREATE_REQUEST,
   USERS_CREATE_FAILURE,
   USERS_CREATE_SUCCESS,
-} from '../actions/users';
+} from './types';
 
 const requested = (state = false, action) => {
   switch (action.type) {
@@ -33,7 +33,7 @@ const failed = (state = false, action) => {
 const failedError = (state = '', action) => {
   switch (action.type) {
     case USERS_CREATE_FAILURE:
-      return action.error.response.data.reason;
+      return action.error;
     case USERS_CREATE_SUCCESS:
       return '';
     default:

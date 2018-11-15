@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import registerProperties from './register';
+import registerProperties from './users/reducers';
 
 const appReducer = combineReducers({
   registerProperties,

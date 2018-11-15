@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import { createUser } from 'modules/users/thunks';
+
 import RegisterForm from './registerPage/RegisterForm';
 import Header from './landingPage/Header';
-
-import { createUser } from '../modules/actions/users';
 
 const Page = styled.div`
   height: 100%;
@@ -34,10 +34,10 @@ const FormTitle = styled.h1`
 
 const Register = ({ registerUser }) => (
   <Page>
-    <Header/>
+    <Header />
     <FormContainer>
       <FormTitle>Register</FormTitle>
-      <RegisterForm registerUser={registerUser}/>
+      <RegisterForm registerUser={registerUser} />
     </FormContainer>
   </Page>
 );
@@ -50,6 +50,9 @@ Register.propTypes = {
 
 const mapDispatchToProps = {
   registerUser: createUser,
-}
+};
 
-export default connect(undefined, mapDispatchToProps)(Register);
+export default connect(
+  undefined,
+  mapDispatchToProps,
+)(Register);

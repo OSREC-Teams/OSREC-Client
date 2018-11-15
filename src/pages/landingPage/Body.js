@@ -23,7 +23,7 @@ const Body = () => (
   <Wrapper>
     <Title marginBottom="1.5em">Application Name</Title>
     <Button fontSize="1.5rem" padding="0.375rem 4rem">
-      Chat Now !
+      Register and Chat Now !
     </Button>
     <AppPurposeCardsWithMargin />
   </Wrapper>

@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
 import Button from 'components/Button';
 
 const Wrapper = styled.div`
@@ -12,7 +14,9 @@ const Wrapper = styled.div`
 
 const Header = () => (
   <Wrapper>
-    <Button>Login</Button>
+    <Link to="/login">
+      <Button>Login</Button>
+    </Link>
   </Wrapper>
 );
 

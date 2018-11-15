@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import LandingPage from 'pages/LandingPage';
 import RegisterPage from 'pages/RegisterPage';
+import LoginPage from 'pages/LoginPage';
 
 const ProtectedRouter = () => <Router />;
 
@@ -13,6 +14,7 @@ const GuestRouter = () => (
     <Switch>
       <Route exact path="/" component={LandingPage} />
       <Route path="/register" component={RegisterPage} />
+      <Route path="/login" component={LoginPage} />
     </Switch>
   </Router>
 );

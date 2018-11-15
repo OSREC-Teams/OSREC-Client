@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
+import Title from 'components/Title';
 import Button from 'components/Button';
 import AppPurposeCards from './AppPurposeCards';
 
@@ -14,28 +16,18 @@ const Wrapper = styled.div`
   width: 100vw;
 `;
 
-const Title = styled.h1`
-  font-family: 'Exo 2', sans-serif;
-  color: white;
-  padding: 0.5em 0;
-  border-top: 2px solid #6c3b91;
-  border-bottom: 2px solid #6c3b91;
-  width: 100%;
-  text-align: center;
-  font-weight: normal;
-  margin-bottom: 1.5em;
-`;
-
 const AppPurposeCardsWithMargin = styled(AppPurposeCards)`
   margin: 50px 20px;
 `;
 
 const Body = () => (
   <Wrapper>
-    <Title>Application Name</Title>
-    <Button fontSize="1.5rem" padding="0.375rem 4rem">
-      Chat Now !
-    </Button>
+    <Title marginBottom="1.5em">Application Name</Title>
+    <Link to="/register">
+      <Button fontSize="1.5rem" padding="0.375rem 4rem">
+        Register and Chat Now !
+      </Button>
+    </Link>
     <AppPurposeCardsWithMargin />
   </Wrapper>
 );

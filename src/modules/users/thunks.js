@@ -22,7 +22,6 @@ export const createUser = user => dispatch =>
         resolve();
       })
       .catch(e => {
-        console.log(e);
         dispatch(usersCreateFailure(e));
         reject();
       });

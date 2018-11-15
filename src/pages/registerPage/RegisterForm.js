@@ -1,71 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withFormik, Form } from 'formik';
-import styled from 'styled-components';
+import { withFormik } from 'formik';
 import * as yup from 'yup';
 import { connect } from 'react-redux';
 
 import { createUser } from 'modules/users/thunks';
 
-import ErrorField from '../../components/formComponents/Error';
-import FormField from '../../components/formComponents/Field';
-import Button from '../../components/Button';
-
-const FieldContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const FormContainer = styled.div`
-  border-radius: 0.25rem;
-  padding: 20px;
-  background-color: #666666;
-  display: flex;
-  align-items: center;
-  justify-content: evenly;
-  flex-direction: column;
-`;
-
-const errorDisplay = (touched, errors) => {
-  const displayedError = Object.keys(touched).map(touchedKey =>
-    Object.keys(errors).map(errorKey => {
-      if (touchedKey === errorKey) {
-        return <ErrorField key={errorKey}>{errors[errorKey]}</ErrorField>;
-      }
-      return null;
-    }),
-  );
-  return displayedError;
-};
+import Form from 'components/formComponents/Form';
+import FormWrapper from 'components/formComponents/Wrapper';
+import FormField from 'components/formComponents/Field';
+import Button from 'components/Button';
 
 const RegisterForm = ({ errors, touched, isSubmitting }) => (
-  <Form>
-    <FormContainer>
-      {errorDisplay(touched, errors)}
-      <FieldContainer>
-        <FormField
-          type="email"
-          name="email"
-          placeholder="Email"
-          error={touched.email && errors.email}
-        />
-      </FieldContainer>
-      <FieldContainer>
-        <FormField
-          type="username"
-          name="username"
-          placeholder="Username"
-          error={touched.username && errors.username}
-        />
-      </FieldContainer>
-      <FieldContainer>
-        <FormField
-          type="password"
-          name="password"
-          placeholder="Password"
-          error={touched.password && errors.password}
-        />
-      </FieldContainer>
+  <FormWrapper>
+    <Form errors={errors} touched={touched}>
+      <FormField
+        type="email"
+        name="email"
+        placeholder="Email"
+        error={touched.email && errors.email}
+      />
+      <FormField
+        type="username"
+        name="username"
+        placeholder="Username"
+        error={touched.username && errors.username}
+      />
+      <FormField
+        type="password"
+        name="password"
+        placeholder="Password"
+        error={touched.password && errors.password}
+      />
       <Button
         disabled={isSubmitting}
         type="submit"
@@ -74,8 +40,8 @@ const RegisterForm = ({ errors, touched, isSubmitting }) => (
       >
         Submit
       </Button>
-    </FormContainer>
-  </Form>
+    </Form>
+  </FormWrapper>
 );
 
 RegisterForm.propTypes = {

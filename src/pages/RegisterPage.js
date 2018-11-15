@@ -1,9 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-
-import { createUser } from 'modules/users/thunks';
 
 import RegisterForm from './registerPage/RegisterForm';
 import Header from './landingPage/Header';
@@ -32,27 +28,14 @@ const FormTitle = styled.h1`
   margin-bottom: 20px;
 `;
 
-const Register = ({ registerUser }) => (
+const RegisterPage = () => (
   <Page>
     <Header />
     <FormContainer>
       <FormTitle>Register</FormTitle>
-      <RegisterForm registerUser={registerUser} />
+      <RegisterForm />
     </FormContainer>
   </Page>
 );
 
-Register.defaultProps = {};
-
-Register.propTypes = {
-  registerUser: PropTypes.func.isRequired,
-};
-
-const mapDispatchToProps = {
-  registerUser: createUser,
-};
-
-export default connect(
-  undefined,
-  mapDispatchToProps,
-)(Register);
+export default RegisterPage;

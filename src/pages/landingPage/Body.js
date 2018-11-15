@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import Title from 'components/Title';
 import Button from 'components/Button';
@@ -22,9 +23,11 @@ const AppPurposeCardsWithMargin = styled(AppPurposeCards)`
 const Body = () => (
   <Wrapper>
     <Title marginBottom="1.5em">Application Name</Title>
-    <Button fontSize="1.5rem" padding="0.375rem 4rem">
-      Register and Chat Now !
-    </Button>
+    <Link to="/register">
+      <Button fontSize="1.5rem" padding="0.375rem 4rem">
+        Register and Chat Now !
+      </Button>
+    </Link>
     <AppPurposeCardsWithMargin />
   </Wrapper>
 );

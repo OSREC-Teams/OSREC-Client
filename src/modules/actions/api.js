@@ -1,4 +1,4 @@
-const URL = 'http://91.121.66.56';
-const port = 7000;
+const URL = 'http://localhost';
+const port = 8080;
 
-export default `${URL}:${port}`
+export default `${URL}:${port}`;

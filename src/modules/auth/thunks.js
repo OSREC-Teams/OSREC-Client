@@ -15,8 +15,8 @@ export const login = credentials => dispatch =>
       .post(`${URL_API}/auth`, credentials, {
         headers: { 'Content-Type': 'application/json' },
       })
-      .then(() => {
-        dispatch(authCreateSuccess());
+      .then(res => {
+        dispatch(authCreateSuccess(res.data.token));
         resolve();
       })
       .catch(e => {

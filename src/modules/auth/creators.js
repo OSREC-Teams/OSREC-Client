@@ -13,6 +13,7 @@ export const authCreateFailure = error => ({
   error,
 });
 
-export const authCreateSuccess = () => ({
+export const authCreateSuccess = token => ({
   type: AUTH_CREATE_SUCCESS,
+  token,
 });

@@ -52,9 +52,19 @@ const succeeded = (state = false, action) => {
   }
 };
 
+const token = (state = '', action) => {
+  switch (action.type) {
+    case AUTH_CREATE_SUCCESS:
+      return action.token;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   requested,
   failed,
   failedError,
   succeeded,
+  token,
 });

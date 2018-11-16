@@ -1,13 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import LandingPage from 'pages/LandingPage';
 import RegisterPage from 'pages/RegisterPage';
 import LoginPage from 'pages/LoginPage';
 
-const ProtectedRouter = () => <Router />;
+const ProtectedRouter = () => (
+  <Router>
+    <Switch>
+      <Redirect from="/login" to="/" />
+    </Switch>
+  </Router>
+);
 
 const GuestRouter = () => (
   <Router>
@@ -29,8 +40,8 @@ App.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = () => ({
-  loggedIn: false,
+const mapStateToProps = state => ({
+  loggedIn: state.token !== '',
 });
 
 export default connect(mapStateToProps)(App);

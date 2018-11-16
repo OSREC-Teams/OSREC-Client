@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 
 import { withFormik } from 'formik';
 import * as yup from 'yup';
+import { connect } from 'react-redux';
+
+import { login } from 'modules/auth/thunks';
 
 import Form from 'components/formComponents/Form';
 import FormWrapper from 'components/formComponents/Wrapper';
@@ -42,26 +45,28 @@ LoginForm.propTypes = {
   isSubmitting: PropTypes.bool.isRequired,
 };
 
-export default withFormik({
-  mapPropsToValues({ password, username }) {
-    return {
-      username: username || '',
-      password: password || '',
-    };
-  },
-  validationSchema: yup.object().shape({
-    password: yup.string().required('Password is required'),
-    username: yup.string().required('Username is required'),
-  }),
-  handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
-    // TODO: Call the redux once it's done
-    setTimeout(() => {
-      if (values.email === 'andrew@test.io') {
-        setErrors({ email: 'That email is already taken' });
-      } else {
-        resetForm();
-      }
-      setSubmitting(false);
-    }, 2000);
-  },
-})(LoginForm);
+const mapDispatchToProps = dispatch => ({
+  login: credentials => dispatch(login(credentials)),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(
+  withFormik({
+    mapPropsToValues({ password, username }) {
+      return {
+        username: username || '',
+        password: password || '',
+      };
+    },
+    validationSchema: yup.object().shape({
+      password: yup.string().required('Password is required'),
+      username: yup.string().required('Username is required'),
+    }),
+    handleSubmit(values, { resetForm, props }) {
+      props.login({ username: values.username, password: values.password });
+      resetForm();
+    },
+  })(LoginForm),
+);

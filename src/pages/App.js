@@ -16,6 +16,11 @@ const ProtectedRouter = () => (
   <Router>
     <Switch>
       <Redirect from="/login" to="/" />
+      <Route
+        exact
+        path="/"
+        render={() => <p style={{ color: 'white' }}>Connected</p>}
+      />
     </Switch>
   </Router>
 );
@@ -41,7 +46,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  loggedIn: state.token !== '',
+  loggedIn: state.authProperties.token !== '',
 });
 
 export default connect(mapStateToProps)(App);

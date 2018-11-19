@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { connect } from 'react-redux';
 
 import { createUser } from 'modules/users/thunks';
+import Translate from 'utils/translate';
 
 import Form from 'components/formComponents/Form';
 import FormWrapper from 'components/formComponents/Wrapper';
@@ -17,19 +18,19 @@ const RegisterForm = ({ errors, touched, isSubmitting }) => (
       <FormField
         type="email"
         name="email"
-        placeholder="Email"
+        placeholder={Translate.get('Email')}
         error={touched.email && errors.email}
       />
       <FormField
         type="username"
         name="username"
-        placeholder="Username"
+        placeholder={Translate.get('Username')}
         error={touched.username && errors.username}
       />
       <FormField
         type="password"
         name="password"
-        placeholder="Password"
+        placeholder={Translate.get('Password')}
         error={touched.password && errors.password}
       />
       <Button
@@ -38,7 +39,7 @@ const RegisterForm = ({ errors, touched, isSubmitting }) => (
         fontSize="1.5rem"
         padding="0.375rem 4rem"
       >
-        Submit
+        {Translate.get('Submit')}
       </Button>
     </Form>
   </FormWrapper>

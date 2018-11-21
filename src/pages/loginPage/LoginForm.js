@@ -12,12 +12,12 @@ import FormWrapper from 'components/formComponents/Wrapper';
 import FormField from 'components/formComponents/Field';
 import Button from 'components/Button';
 
-const LoginForm = ({ errors, touched, isSubmitting }) => (
+const LoginForm = ({ submitStatus, errors, touched, isSubmitting }) => (
   <FormWrapper>
-    <Form errors={errors} touched={touched}>
+    <Form submitStatus={submitStatus} errors={errors} touched={touched}>
       <FormField
-        type="username"
-        name="username"
+        type="login"
+        name="login"
         placeholder="Username"
         error={touched.username && errors.username}
       />
@@ -43,14 +43,23 @@ LoginForm.propTypes = {
   errors: PropTypes.object.isRequired,
   touched: PropTypes.object.isRequired,
   isSubmitting: PropTypes.bool.isRequired,
+  submitStatus: PropTypes.shape({
+    succeeded: PropTypes.bool,
+    failed: PropTypes.bool,
+    failedError: PropTypes.shape({ message: PropTypes.string }).isRequired,
+  }).isRequired,
 };
+
+const mapStateToProps = state => ({
+  submitStatus: state.authProperties,
+});
 
 const mapDispatchToProps = dispatch => ({
   login: credentials => dispatch(login(credentials)),
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(
   withFormik({
@@ -62,10 +71,10 @@ export default connect(
     },
     validationSchema: yup.object().shape({
       password: yup.string().required('Password is required'),
-      username: yup.string().required('Username is required'),
+      login: yup.string().required('Username is required'),
     }),
     handleSubmit(values, { resetForm, props }) {
-      props.login({ username: values.username, password: values.password });
+      props.login({ login: values.login, password: values.password });
       resetForm();
     },
   })(LoginForm),

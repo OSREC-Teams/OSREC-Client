@@ -11,9 +11,9 @@ import FormWrapper from 'components/formComponents/Wrapper';
 import FormField from 'components/formComponents/Field';
 import Button from 'components/Button';
 
-const RegisterForm = ({ errors, touched, isSubmitting }) => (
+const RegisterForm = ({ submitStatus, errors, touched, isSubmitting }) => (
   <FormWrapper>
-    <Form errors={errors} touched={touched}>
+    <Form submitStatus={submitStatus} errors={errors} touched={touched}>
       <FormField
         type="email"
         name="email"
@@ -48,7 +48,16 @@ RegisterForm.propTypes = {
   errors: PropTypes.object.isRequired,
   touched: PropTypes.object.isRequired,
   isSubmitting: PropTypes.bool.isRequired,
+  submitStatus: PropTypes.shape({
+    succeeded: PropTypes.bool,
+    failed: PropTypes.bool,
+    failedError: PropTypes.shape({ message: PropTypes.string }).isRequired,
+  }).isRequired,
 };
+
+const mapStateToProps = state => ({
+  submitStatus: state.registerProperties,
+});
 
 const mapDispatchToProps = dispatch => ({
   registerUser: user => dispatch(createUser(user)),
@@ -89,6 +98,6 @@ const RegisterFormik = withFormik({
 })(RegisterForm);
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(RegisterFormik);

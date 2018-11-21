@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Form as FormikForm } from 'formik';
 
 import ErrorField from 'components/formComponents/Error';
+import SuccessField from 'components/formComponents/Success';
 
 const SForm = styled(FormikForm)`
   width: 100%;
@@ -26,14 +27,23 @@ const errorDisplay = (touched, errors) => {
   return displayedError;
 };
 
-const Form = ({ touched, errors, children }) => (
+const Form = ({ submitStatus, touched, errors, children }) => (
   <SForm>
+    {submitStatus.failed && (
+      <ErrorField>{submitStatus.failedError.message}</ErrorField>
+    )}
+    {submitStatus.succeeded && <SuccessField>Success !</SuccessField>}
     {errorDisplay(touched, errors)}
     {children}
   </SForm>
 );
 
 Form.propTypes = {
+  submitStatus: PropTypes.shape({
+    succeeded: PropTypes.bool,
+    failed: PropTypes.bool,
+    failedError: PropTypes.shape({ message: PropTypes.string }).isRequired,
+  }).isRequired,
   touched: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
   children: PropTypes.oneOfType([

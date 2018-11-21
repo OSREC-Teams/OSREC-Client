@@ -30,7 +30,7 @@ const failed = (state = false, action) => {
   }
 };
 
-const failedError = (state = '', action) => {
+const failedError = (state = {}, action) => {
   switch (action.type) {
     case USERS_CREATE_FAILURE:
       return action.error;

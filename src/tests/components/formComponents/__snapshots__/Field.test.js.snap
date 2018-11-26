@@ -7,7 +7,7 @@ exports[`Button renders a field with error 1`] = `
     Object {
       "$$typeof": Symbol(react.forward_ref),
       "WrappedComponent": [Function],
-      "attrs": undefined,
+      "attrs": Array [],
       "componentStyle": ComponentStyle {
         "componentId": "sc-bdVaJa",
         "isStatic": false,
@@ -34,6 +34,7 @@ exports[`Button renders a field with error 1`] = `
       "render": [Function],
       "styledComponentId": "sc-bdVaJa",
       "target": [Function],
+      "toString": [Function],
       "warnTooManyClasses": [Function],
       "withComponent": [Function],
       Symbol(Symbol.hasInstance): [Function],
@@ -53,7 +54,7 @@ exports[`Button renders a field without error 1`] = `
     Object {
       "$$typeof": Symbol(react.forward_ref),
       "WrappedComponent": [Function],
-      "attrs": undefined,
+      "attrs": Array [],
       "componentStyle": ComponentStyle {
         "componentId": "sc-bdVaJa",
         "isStatic": false,
@@ -80,6 +81,7 @@ exports[`Button renders a field without error 1`] = `
       "render": [Function],
       "styledComponentId": "sc-bdVaJa",
       "target": [Function],
+      "toString": [Function],
       "warnTooManyClasses": [Function],
       "withComponent": [Function],
       Symbol(Symbol.hasInstance): [Function],

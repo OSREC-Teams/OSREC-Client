@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export default styled.div`
   color: white;
   background: red;
-  height: 2em;
+  min-height: 2em;
+  text-align: center;
   padding: 0.5em;
   font-family: 'Exo 2', sans-serif;
   font-weight: bold;

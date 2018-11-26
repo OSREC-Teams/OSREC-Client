@@ -5,7 +5,7 @@ exports[`Button renders a form error div 1`] = `
   forwardedClass={
     Object {
       "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
+      "attrs": undefined,
       "componentStyle": ComponentStyle {
         "componentId": "sc-bdVaJa",
         "isStatic": true,
@@ -33,7 +33,6 @@ exports[`Button renders a form error div 1`] = `
       "render": [Function],
       "styledComponentId": "sc-bdVaJa",
       "target": "div",
-      "toString": [Function],
       "warnTooManyClasses": [Function],
       "withComponent": [Function],
     }

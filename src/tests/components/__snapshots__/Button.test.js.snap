@@ -5,7 +5,7 @@ exports[`Button renders an html button 1`] = `
   forwardedClass={
     Object {
       "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
+      "attrs": undefined,
       "componentStyle": ComponentStyle {
         "componentId": "sc-bdVaJa",
         "isStatic": false,
@@ -47,7 +47,6 @@ exports[`Button renders an html button 1`] = `
       "render": [Function],
       "styledComponentId": "sc-bdVaJa",
       "target": "button",
-      "toString": [Function],
       "warnTooManyClasses": [Function],
       "withComponent": [Function],
     }

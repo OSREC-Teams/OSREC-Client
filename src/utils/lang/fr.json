@@ -1,0 +1,13 @@
+{
+  "REGISTER": "Inscription",
+  "USERNAME": "Pseudo",
+  "EMAIL": "Email",
+  "PASSWORD": "Mot de passe",
+  "SUBMIT": "Envoyer",
+  "EMAIL_NOT_VALID": "L'email n'est pas valide",
+  "EMAIL_IS_REQUIRED": "L'email est requis",
+  "PASSWORD_TOO_SHORT": "Le mot de passe est de 9 caractère minimum",
+  "PASSWORD_IS_REQUIRED": "Le mot de passe est requis",
+  "USERNAME_TOO_SHORT": "Le pseudo est de 3 caractère minimum",
+  "USERNAME_IS_REQUIRED": "Le pseudo est requis"
+}

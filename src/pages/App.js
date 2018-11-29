@@ -8,6 +8,8 @@ import {
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import { init } from 'utils/translate';
+
 import LandingPage from 'pages/LandingPage';
 import RegisterPage from 'pages/RegisterPage';
 import LoginPage from 'pages/LoginPage';
@@ -35,11 +37,14 @@ const GuestRouter = () => (
   </Router>
 );
 
-export const App = ({ loggedIn }) => (
-  <React.Fragment>
-    {loggedIn ? <ProtectedRouter /> : <GuestRouter />}
-  </React.Fragment>
-);
+export const App = ({ loggedIn }) => {
+  init('fr');
+  return (
+    <React.Fragment>
+      {loggedIn ? <ProtectedRouter /> : <GuestRouter />}
+    </React.Fragment>
+  );
+};
 
 App.propTypes = {
   loggedIn: PropTypes.bool.isRequired,

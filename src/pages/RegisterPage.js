@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Translate from 'utils/translate';
 import Title from 'components/Title';
+import { translate } from 'utils/translate';
 import RegisterForm from './registerPage/RegisterForm';
 import Header from './landingPage/Header';
-
 
 const Page = styled.div`
   height: 100%;
@@ -23,7 +22,7 @@ const RegisterPage = () => (
   <Page>
     <Header />
     <FormContainer>
-      <Title marginBottom="20px">{Translate.get('Register')}</Title>
+      <Title marginBottom="20px">{translate('REGISTER')}</Title>
       <RegisterForm />
     </FormContainer>
   </Page>

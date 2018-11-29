@@ -45,7 +45,7 @@ const MenuLink = styled(Link)`
 
 const Menu = () => (
   <Wrapper>
-    <MenuLink to="/c/new">Create your own personal space</MenuLink>
+    <MenuLink to="/chatrooms/create">Create your own personal space</MenuLink>
     <MenuElement>Hello</MenuElement>
   </Wrapper>
 );

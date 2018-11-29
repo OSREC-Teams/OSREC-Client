@@ -11,18 +11,19 @@ import { connect } from 'react-redux';
 import LandingPage from 'pages/LandingPage';
 import RegisterPage from 'pages/RegisterPage';
 import LoginPage from 'pages/LoginPage';
+import HomePage from 'pages/HomePage';
+import Menu from 'components/Menu';
 
 const ProtectedRouter = () => (
-  <Router>
-    <Switch>
-      <Redirect from="/login" to="/" />
-      <Route
-        exact
-        path="/"
-        render={() => <p style={{ color: 'white' }}>Connected</p>}
-      />
-    </Switch>
-  </Router>
+  <React.Fragment>
+    <Router>
+      <Switch>
+        <Menu />
+        <Redirect from="/login" to="/" />
+        <Route exact path="/" component={HomePage} />
+      </Switch>
+    </Router>
+  </React.Fragment>
 );
 
 const GuestRouter = () => (

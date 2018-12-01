@@ -20,8 +20,7 @@ export const fetchChatrooms = () => dispatch =>
     dispatch(chatroomsFetchRequest());
     axios
       .get(`${URL_API}/chatrooms`, axiosConfig)
-      .then(data => {
-        console.log(data);
+      .then(({ data }) => {
         dispatch(chatroomsFetchSuccess(data));
         resolve();
       })

@@ -54,7 +54,7 @@ ChatroomsCreateForm.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  submitStatus: state.chatroomsProperties,
+  submitStatus: state.chatroomsProperties.creation,
 });
 
 const mapDispatchToProps = dispatch => ({

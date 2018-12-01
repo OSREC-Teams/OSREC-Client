@@ -12,16 +12,25 @@ import LandingPage from 'pages/LandingPage';
 import RegisterPage from 'pages/RegisterPage';
 import LoginPage from 'pages/LoginPage';
 import HomePage from 'pages/HomePage';
+import ChatroomsCreatePage from 'pages/ChatroomsCreatePage';
 import Menu from 'components/Menu';
 
 const ProtectedRouter = () => (
   <React.Fragment>
     <Router>
-      <Switch>
+      <React.Fragment>
         <Menu />
-        <Redirect from="/login" to="/" />
-        <Route exact path="/" component={HomePage} />
-      </Switch>
+        <Switch>
+          <Redirect from="/login" to="/" />
+          <Route exact path="/" component={HomePage} />
+          <Route
+            exact
+            path="/chatrooms/create"
+            component={ChatroomsCreatePage}
+          />
+          <Route renders={<p style={{ color: 'white' }}>Not Found</p>} />
+        </Switch>
+      </React.Fragment>
     </Router>
   </React.Fragment>
 );

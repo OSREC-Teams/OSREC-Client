@@ -11,7 +11,7 @@ import {
   chatroomsFetchSuccess,
 } from './creators';
 
-export const getChatrooms = () => dispatch =>
+export const fetchChatrooms = () => dispatch =>
   new Promise((resolve, reject) => {
     const axiosConfig = {
       headers: { 'Content-Type': 'application/json' },

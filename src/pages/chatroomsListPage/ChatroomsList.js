@@ -4,9 +4,11 @@ import { connect } from 'react-redux';
 
 import { fetchChatrooms } from 'modules/chatrooms/thunks';
 
-class ChatroomsList extends React.Components {
+class ChatroomsList extends React.Component {
   componentDidMount() {
-    this.props.fetchChatrooms();
+    const { fetchAllChatrooms } = this.props;
+
+    fetchAllChatrooms();
   }
 
   render() {
@@ -19,7 +21,7 @@ class ChatroomsList extends React.Components {
 ChatroomsList.propTypes = {
   fetchStatus: PropTypes.shape({}).isRequired,
   chatrooms: PropTypes.shape({}).isRequired,
-  fetchChatrooms: PropTypes.func.isRequired,
+  fetchAllChatrooms: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -28,7 +30,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchChatrooms: () => dispatch(fetchChatrooms()),
+  fetchAllChatrooms: () => dispatch(fetchChatrooms()),
 });
 
 export default connect(

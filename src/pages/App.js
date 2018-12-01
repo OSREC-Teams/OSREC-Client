@@ -13,7 +13,7 @@ import RegisterPage from 'pages/RegisterPage';
 import LoginPage from 'pages/LoginPage';
 // import HomePage from 'pages/HomePage';
 import ChatroomsCreatePage from 'pages/ChatroomsCreatePage';
-import Chatrooms from 'pages/Chatrooms';
+import ChatroomsListPage from 'pages/ChatroomsListPage';
 import Menu from 'components/Menu';
 
 const ProtectedRouter = () => (
@@ -23,7 +23,7 @@ const ProtectedRouter = () => (
         <Menu />
         <Switch>
           <Redirect from="/login" to="/" />
-          <Route exact path="/" component={Chatrooms} />
+          <Route exact path="/" component={ChatroomsListPage} />
           <Route
             exact
             path="/chatrooms/create"

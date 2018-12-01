@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Title from 'components/Title';
-import ChatroomsList from './chatrooms/ChatroomsList';
+import ChatroomsList from './chatroomsListPage/ChatroomsList';
 
 const Page = styled.div`
   height: 100%;
@@ -16,7 +16,7 @@ const ListContainer = styled.div`
   justify-content: space-evenly;
 `;
 
-const Chatrooms = () => (
+const ChatroomsListPage = () => (
   <Page>
     <ListContainer>
       <Title marginBottom="20px">Discover chatrooms</Title>
@@ -25,4 +25,4 @@ const Chatrooms = () => (
   </Page>
 );
 
-export default Chatrooms;
+export default ChatroomsListPage;

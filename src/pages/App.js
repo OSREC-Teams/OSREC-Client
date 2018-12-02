@@ -8,11 +8,16 @@ import {
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import io from 'socket.io-client';
+import { socketConnect } from 'modules/socket/creators';
+import API_URL from 'modules/api';
+
 import LandingPage from 'pages/LandingPage';
 import RegisterPage from 'pages/RegisterPage';
 import LoginPage from 'pages/LoginPage';
 import ChatroomsCreatePage from 'pages/ChatroomsCreatePage';
 import ChatroomsListPage from 'pages/ChatroomsListPage';
+import ChatroomPage from 'pages/ChatroomPage';
 import Menu from 'components/Menu';
 
 const ProtectedRouter = () => (
@@ -28,6 +33,7 @@ const ProtectedRouter = () => (
             path="/chatrooms/create"
             component={ChatroomsCreatePage}
           />
+          <Route path="/c/:room" component={ChatroomPage} />
           <Route renders={<p style={{ color: 'white' }}>Not Found</p>} />
         </Switch>
       </React.Fragment>
@@ -45,18 +51,36 @@ const GuestRouter = () => (
   </Router>
 );
 
-export const App = ({ loggedIn }) => (
-  <React.Fragment>
-    {loggedIn ? <ProtectedRouter /> : <GuestRouter />}
-  </React.Fragment>
-);
+export class App extends React.Component {
+  componentDidMount() {
+    const { connectToSocket } = this.props;
+    connectToSocket();
+  }
+
+  render() {
+    const { loggedIn } = this.props;
+    return (
+      <React.Fragment>
+        {loggedIn ? <ProtectedRouter /> : <GuestRouter />}
+      </React.Fragment>
+    );
+  }
+}
 
 App.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
+  connectToSocket: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   loggedIn: state.authProperties.token !== '',
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => ({
+  connectToSocket: () => dispatch(socketConnect(io(API_URL))),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App);

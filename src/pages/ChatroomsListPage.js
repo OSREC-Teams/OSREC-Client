@@ -6,6 +6,7 @@ import ChatroomsList from './chatroomsListPage/ChatroomsList';
 
 const Page = styled.div`
   height: 100%;
+  overflow: hidden;
 `;
 
 const ListContainer = styled.div`

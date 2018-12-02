@@ -16,4 +16,5 @@ export const ListBody = styled.tbody`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  overflow-y: auto;
 `;

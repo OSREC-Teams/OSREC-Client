@@ -5,8 +5,7 @@ import { connect } from 'react-redux';
 import { fetchChatrooms } from 'modules/chatrooms/thunks';
 
 import ChatroomLink from './ChatroomLink';
-import { ListWrapper, ListBody } from './ListWrapper';
-import ListElem from './ListElem';
+import ListWrapper from './ListWrapper';
 
 class ChatroomsList extends React.Component {
   componentDidMount() {
@@ -20,13 +19,9 @@ class ChatroomsList extends React.Component {
 
     return (
       <ListWrapper>
-        <ListBody>
-          {chatrooms.map(room => (
-            <ListElem>
-              <ChatroomLink to={`/c/${room.name}`}>{room.name}</ChatroomLink>
-            </ListElem>
-          ))}
-        </ListBody>
+        {chatrooms.map(room => (
+          <ChatroomLink to={`/c/${room.name}`}>{room.name}</ChatroomLink>
+        ))}
       </ListWrapper>
     );
   }

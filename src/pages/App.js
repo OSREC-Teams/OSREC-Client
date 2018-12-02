@@ -11,7 +11,6 @@ import { connect } from 'react-redux';
 import LandingPage from 'pages/LandingPage';
 import RegisterPage from 'pages/RegisterPage';
 import LoginPage from 'pages/LoginPage';
-// import HomePage from 'pages/HomePage';
 import ChatroomsCreatePage from 'pages/ChatroomsCreatePage';
 import ChatroomsListPage from 'pages/ChatroomsListPage';
 import Menu from 'components/Menu';

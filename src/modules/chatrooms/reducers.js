@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
 
+import { MESSAGE_ADD } from 'modules/messages/types';
+
 import {
   CHATROOMS_CREATE_REQUEST,
   CHATROOMS_CREATE_FAILURE,
@@ -90,10 +92,27 @@ const fetchFailedError = (state = {}, action) => {
   }
 };
 
+const chatroom = (state = {}, action) => {
+  switch (action.type) {
+    case MESSAGE_ADD:
+      return {
+        ...state,
+        messages: [...state.messages, action.message],
+      };
+    default:
+      return state;
+  }
+};
+
 export const chatrooms = (state = {}, action) => {
   switch (action.type) {
     case CHATROOMS_FETCH_SUCCESS:
       return action.rooms;
+    case MESSAGE_ADD:
+      return {
+        ...state,
+        [action.room]: chatroom(state[action.room], action),
+      };
     default:
       return state;
   }

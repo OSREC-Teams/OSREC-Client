@@ -72,8 +72,10 @@ const ChatroomsCreateFormik = withFormik({
   validationSchema: yup.object().shape({
     name: yup
       .string()
+      .strict()
       .max(20, 'Name must be no longer than 20 characters')
       .min(3, 'Name must be 3 characters or longer')
+      .lowercase('Name must be lowercase')
       .required('Room name is required'),
     description: yup.string(),
   }),

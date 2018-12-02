@@ -1,7 +1,9 @@
 import axios from 'axios';
+import { normalize } from 'normalizr';
 
 import URL_API from '../api';
 
+import { chatroomsListSchema } from './schemas';
 import {
   chatroomsCreateRequest,
   chatroomsCreateFailure,
@@ -21,7 +23,8 @@ export const fetchChatrooms = () => dispatch =>
     axios
       .get(`${URL_API}/chatrooms`, axiosConfig)
       .then(({ data }) => {
-        dispatch(chatroomsFetchSuccess(data));
+        const { chatrooms } = normalize(data, chatroomsListSchema).entities;
+        dispatch(chatroomsFetchSuccess(chatrooms));
         resolve();
       })
       .catch(e => {

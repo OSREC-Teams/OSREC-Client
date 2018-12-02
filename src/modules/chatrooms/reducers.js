@@ -38,7 +38,7 @@ const creationFailedError = (state = {}, action) => {
     case CHATROOMS_CREATE_FAILURE:
       return action.error;
     case CHATROOMS_CREATE_SUCCESS:
-      return '';
+      return {};
     default:
       return state;
   }
@@ -84,7 +84,7 @@ const fetchFailedError = (state = {}, action) => {
     case CHATROOMS_FETCH_FAILURE:
       return action.error;
     case CHATROOMS_FETCH_SUCCESS:
-      return '';
+      return {};
     default:
       return state;
   }
@@ -100,15 +100,15 @@ export const chatrooms = (state = {}, action) => {
 };
 
 export const chatroomsProperties = combineReducers({
-  creation: {
+  creation: combineReducers({
     requested: creationRequested,
     failed: creationFailed,
     failedError: creationFailedError,
     succeeded: creationSucceeded,
-  },
-  fetch: {
+  }),
+  fetch: combineReducers({
     requested: fetchRequested,
     failed: fetchFailed,
     failedError: fetchFailedError,
-  },
+  }),
 });

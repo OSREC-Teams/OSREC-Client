@@ -17,4 +17,5 @@ export const ListBody = styled.tbody`
   align-items: center;
   justify-content: space-evenly;
   overflow-y: auto;
+  max-height: 700px;
 `;

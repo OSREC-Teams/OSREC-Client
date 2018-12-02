@@ -14,20 +14,6 @@ const Wrapper = styled.div`
   justify-content: space-between;
 `;
 
-const MenuElement = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 25px;
-  color: white;
-  background-color: #6c3b91;
-
-  &:hover {
-    background-color: #8449b2;
-    cursor: pointer;
-  }
-`;
-
 const MenuLink = styled(Link)`
   display: flex;
   flex-direction: column;
@@ -45,8 +31,8 @@ const MenuLink = styled(Link)`
 
 const Menu = () => (
   <Wrapper>
-    <MenuLink to="/chatrooms/create">Create your own personal space</MenuLink>
-    <MenuElement>Hello</MenuElement>
+    <MenuLink to="/chatrooms/create">Create chatroom</MenuLink>
+    <MenuLink to="/">Return to lobby</MenuLink>
   </Wrapper>
 );
 

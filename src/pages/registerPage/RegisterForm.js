@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { connect } from 'react-redux';
 
 import { createUser } from 'modules/users/thunks';
+import { translate } from 'utils/translate';
 
 import Form from 'components/formComponents/Form';
 import FormWrapper from 'components/formComponents/Wrapper';
@@ -17,19 +18,19 @@ const RegisterForm = ({ submitStatus, errors, touched, isSubmitting }) => (
       <FormField
         type="email"
         name="email"
-        placeholder="Email"
+        placeholder={translate('EMAIL')}
         error={touched.email && errors.email}
       />
       <FormField
         type="username"
         name="username"
-        placeholder="Username"
+        placeholder={translate('USERNAME')}
         error={touched.username && errors.username}
       />
       <FormField
         type="password"
         name="password"
-        placeholder="Password"
+        placeholder={translate('PASSWORD')}
         error={touched.password && errors.password}
       />
       <Button
@@ -38,7 +39,7 @@ const RegisterForm = ({ submitStatus, errors, touched, isSubmitting }) => (
         fontSize="1.5rem"
         padding="0.375rem 4rem"
       >
-        Submit
+        {translate('SUBMIT')}
       </Button>
     </Form>
   </FormWrapper>
@@ -71,20 +72,19 @@ const RegisterFormik = withFormik({
       username: username || '',
     };
   },
-
   validationSchema: yup.object().shape({
     email: yup
       .string()
-      .email('Email not valid')
-      .required('Email is required'),
+      .email(translate('EMAIL_NOT_VALID'))
+      .required(translate('EMAIL_IS_REQUIRED')),
     password: yup
       .string()
       .min(9, 'Password must be 9 characters or longer')
-      .required('Password is required'),
+      .required(translate('PASSWORD_IS_REQUIRED')),
     username: yup
       .string()
-      .min(3, 'Username must be 3 characters or longer')
-      .required('Username is required'),
+      .min(3, translate('USERNAME_TOO_SHORT'))
+      .required(translate('USERNAME_IS_REQUIRED')),
   }),
 
   handleSubmit(values, { props, resetForm }) {

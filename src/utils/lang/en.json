@@ -1,0 +1,14 @@
+{
+  "REGISTER": "Register",
+  "USERNAME": "Username",
+  "EMAIL": "Email",
+  "PASSWORD": "Password",
+  "SUBMIT": "Submit",
+  "LOGIN": "Login",
+  "EMAIL_NOT_VALID": "Email is not valid",
+  "EMAIL_IS_REQUIRED": "Email is required",
+  "PASSWORD_TOO_SHORT": "Password must be 9 characters or longer",
+  "PASSWORD_IS_REQUIRED": "Password is required",
+  "USERNAME_TOO_SHORT": "Username must be 3 characters or longer",
+  "USERNAME_IS_REQUIRED": "Username is required"
+}

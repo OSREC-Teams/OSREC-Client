@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import io from 'socket.io-client';
 import { socketConnect } from 'modules/socket/creators';
 import API_URL from 'modules/api';
+import { init } from 'utils/translate';
 
 import LandingPage from 'pages/LandingPage';
 import RegisterPage from 'pages/RegisterPage';
@@ -54,6 +55,8 @@ const GuestRouter = () => (
 export class App extends React.Component {
   componentDidMount() {
     const { connectToSocket } = this.props;
+    Promise.all([init('fr')]);
+
     connectToSocket();
   }
 

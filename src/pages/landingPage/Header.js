@@ -1,7 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
+import changeLang from 'modules/lang/thunks';
+
+import { translate } from 'utils/translate';
+
+import LanguageSelect from 'components/LanguageSelect';
 import Button from 'components/Button';
 
 const Wrapper = styled.div`
@@ -12,12 +19,30 @@ const Wrapper = styled.div`
   padding-right: 30px;
 `;
 
-const Header = () => (
-  <Wrapper>
-    <Link to="/login">
-      <Button>Login</Button>
-    </Link>
-  </Wrapper>
-);
+const Header = ({ lang }) => {
+  const langChange = event => {
+    lang(event.target.value);
+  };
 
-export default Header;
+  return (
+    <Wrapper>
+      <LanguageSelect langChange={langChange} />
+      <Link to="/login">
+        <Button>{translate('LOGIN')}</Button>
+      </Link>
+    </Wrapper>
+  );
+};
+
+const mapDispatchToProps = dispatch => ({
+  lang: lang => dispatch(changeLang(lang)),
+});
+
+Header.propTypes = {
+  lang: PropTypes.func.isRequired,
+};
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(Header);

@@ -4,6 +4,7 @@
   "EMAIL": "Email",
   "PASSWORD": "Mot de passe",
   "SUBMIT": "Envoyer",
+  "LOGIN": "Connection",
   "EMAIL_NOT_VALID": "L'email n'est pas valide",
   "EMAIL_IS_REQUIRED": "L'email est requis",
   "PASSWORD_TOO_SHORT": "Le mot de passe est de 9 caractère minimum",

@@ -12,9 +12,6 @@ export const init = lc => {
 
 export const getPhrases = () => polyglot.phrases;
 
-export const translate = key => {
-  if (!polyglot.phrases[key]) return key;
-  return polyglot.phrases[key];
-};
+export const translate = key => polyglot.phrases[key];
 
 export default polyglot;

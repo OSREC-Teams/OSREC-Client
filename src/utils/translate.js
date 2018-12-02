@@ -10,4 +10,11 @@ export const init = lc => {
   else polyglot.extend(en);
 };
 
-export const translate = key => polyglot.t(key);
+export const getPhrases = () => polyglot.phrases;
+
+export const translate = key => {
+  if (!polyglot.phrases[key]) return key;
+  return polyglot.phrases[key];
+};
+
+export default polyglot;

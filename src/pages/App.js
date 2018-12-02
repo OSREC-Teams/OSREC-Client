@@ -37,14 +37,35 @@ const GuestRouter = () => (
   </Router>
 );
 
-export const App = ({ loggedIn }) => {
-  init('fr');
-  return (
-    <React.Fragment>
-      {loggedIn ? <ProtectedRouter /> : <GuestRouter />}
-    </React.Fragment>
-  );
-};
+export class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      loading: true,
+    };
+  }
+
+  async componentDidMount() {
+    await Promise.all([init('fr')]);
+
+    this.setState({ loading: false });
+  }
+
+  render() {
+    const { loggedIn } = this.props;
+    const { loading } = this.state;
+
+    // Insert loading
+    if (loading) {
+      return null;
+    }
+    return (
+      <React.Fragment>
+        {loggedIn ? <ProtectedRouter /> : <GuestRouter />}
+      </React.Fragment>
+    );
+  }
+}
 
 App.propTypes = {
   loggedIn: PropTypes.bool.isRequired,

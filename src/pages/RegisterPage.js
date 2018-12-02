@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Title from 'components/Title';
-import { translate } from 'utils/translate';
+import Polyglot from 'utils/translate';
 import RegisterForm from './registerPage/RegisterForm';
 import Header from './landingPage/Header';
 
@@ -22,7 +22,7 @@ const RegisterPage = () => (
   <Page>
     <Header />
     <FormContainer>
-      <Title marginBottom="20px">{translate('REGISTER')}</Title>
+      <Title marginBottom="20px">{Polyglot.t('REGISTER')}</Title>
       <RegisterForm />
     </FormContainer>
   </Page>
